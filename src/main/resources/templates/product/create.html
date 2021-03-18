@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/header :: headLinkInit"></head>
+<body>
+    <div>
+        <div th:replace="layout/top :: topmenu"></div>
+    </div>
+    <div>
+        <form action="/product/create" method="post">
+            <input type="text" name="name" placeholder="상품이름">
+            <input type="text" name="category">
+            <input type="number" name="price">
+            <input type="number" name="quantity">
+            <input type="submit" value="test">
+        </form>
+    </div>
+
+
+
+
+
+    <div>
+        <div th:replace="layout/footer :: footer"></div>
+    </div>
+</body>
+</html>

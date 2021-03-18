@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div class="topmenu" th:fragment="topmenu">
+    <header class="top-section">
+        <article class="top-bar">
+            <section class="top-bar-section">
+                <span class="user-login-section">
+                    <a th:href="@{/login}">로그인</a>
+                    <a th:href="@{/signup}">회원가입</a>
+                    <a th:href="@{/}">고객센터</a>
+                </span>
+            </section>
+        </article>
+
+        <article class="search-section">
+            <button class="category-button">카테고리</button>
+            <a th:href="@{/}"><img th:src="@{/image/logo.png}" width="174" height="41"></a>
+            <form class="search-form">
+                <select class="search-form-select">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+                <input class="search-input-text" type="text">
+                <input class="search-submit" type="submit" value="검색">
+            </form>
+            <a class="top-mypage-button" th:href="@{/mypage}"><img th:src="@{/image/logo.png}" width="50" height="30"></a>
+            <a class="top-bucket-button" ><img th:src="@{/image/logo.png}" width="50" height="30"></a>
+<!--            <button class="mypopang-button" onclick="">마이코팡</button>-->
+<!--            <button class="buket-button">장바구니</button>-->
+        </article>
+    </header>
+
+</div>
+
+</html>

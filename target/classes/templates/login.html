@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/header :: headLinkInit"></head>
+<body>
+    <div>
+        <div th:replace="layout/top :: topmenu"></div>
+    </div>
+
+    <div>
+        <h2>코팡 이미지</h2>
+    </div>
+    <div>
+        <h2>회원 정보를 입력해 주세요</h2>
+    </div>
+    <div>
+        <form action="/login" method="post">
+            <div><input type="email" name="email" placeholder="아이디(이메일)"></div>
+            <div><input type="password" name="password" placeholder="비밀번호()"></div>
+            <div><input type="submit" value="로그인"></div>
+        </form>
+    </div>
+
+    <div>
+        <div th:replace="layout/footer :: footer"></div>
+    </div>
+</body>
+<!--<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>-->
+<script>
+    var result = [[${errorcode}]];
+    if (result == 404) {
+        alert('아이디 비밀번호를 확인하세요!');
+    }
+</script>
+</html>

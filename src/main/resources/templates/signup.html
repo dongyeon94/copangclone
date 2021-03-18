@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/header :: headLinkInit"></head>
+<body>
+    <div>
+        <div th:replace="layout/top :: topmenu"></div>
+    </div>
+
+    <div>
+        <h2>코팡 이미지</h2>
+    </div>
+    <div>
+        <h2>회원 정보를 입력해 주세요</h2>
+    </div>
+    <div>
+        <form action="/signup" method="post">
+            <div><input type="email" name="email" placeholder="아이디(이메일)"></div>
+            <div><input type="password" name="password" placeholder="비밀번호()"></div>
+            <div><input type="password" name="passwordcheck" placeholder="비밀번호 확인"></div>
+            <div><input type="text" name="nickName" placeholder="이름"></div>
+            <div><input type="number" name="phoneNumber" placeholder="휴대폰 번호"></div>
+            <div><input type="submit" value="가입하기"></div>
+        </form>
+    </div>
+
+    <div>
+        <div th:replace="layout/footer :: footer"></div>
+    </div>
+</body>
+</html>
