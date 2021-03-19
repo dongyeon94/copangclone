@@ -1,6 +1,6 @@
 package com.example.root.user.service.interfaces;
 
-import com.example.root.dao.UserEntity;
+import com.example.root.dao.entity.UserEntity;
 
 public interface UserService {
     public int create(UserEntity user);

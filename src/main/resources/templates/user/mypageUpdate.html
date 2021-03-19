@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/header :: headLinkInit"></head>
+<body>
+    <div>
+        <div th:replace="layout/top :: topmenu"></div>
+    </div>
+
+    <h2>mypage</h2>
+    userData
+    <div>
+<!--        tr th:each="userData : ${userData}" th:object="${userData}">
+            <td th:text="${userData.email}">email</td>
+        </tr>-->
+        <form action="/user/update" method="post">
+            <div th:each="userData :${userData}" th:object="${userData}">
+                <input type="text" th:value="${userData.email}" name="email">
+                <input type="text" th:value="${userData.address}" name="address">
+                <input type="text" th:value="${userData.password}" name="password">
+                <input type="text" th:value="${userData.phoneNumber}" name="phoneNumber">
+                <input type="submit" value="확인">
+
+<!--                <div th:text="${userData.id}"></div>-->
+<!--                <div th:text="${userData.email}"></div>-->
+<!--                <div th:text="${userData.address}"></div>-->
+<!--                <div th:text="${userData.password}"></div>-->
+<!--                <div th:text="${userData.id}"></div>-->
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <div th:replace="layout/footer :: footer"></div>
+    </div>
+</body>
+</html>

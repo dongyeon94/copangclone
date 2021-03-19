@@ -7,6 +7,13 @@
     <div>
         <div th:replace="layout/top :: topmenu"></div>
     </div>
+
+    <div>
+        <form action="/product/read" method="get">
+            <input type="submit" value="돌아가기">
+        </form>
+    </div>
+
     <div>
         <form action="/product/create" method="post">
             <input type="text" name="name" placeholder="상품이름">

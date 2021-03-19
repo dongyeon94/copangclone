@@ -1,4 +1,4 @@
-package com.example.root.dao;
+package com.example.root.dao.entity;
 
 import lombok.Data;
 import lombok.Getter;

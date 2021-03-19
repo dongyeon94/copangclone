@@ -9,9 +9,27 @@
         <div th:replace="layout/top :: topmenu"></div>
     </div>
 
+    <div>
+        <form action="/product/create" method="get">
+            <input type="submit" value="상품 등록">
+        </form>
+    </div>
 
+    <div>
+        <h2>main view</h2>
+        <div th:each="productList : ${productList}" th:object="${productList}">
+            <div th:text="${productList.id}"></div>
+            <div th:text="${productList.name}"></div>
+            <div th:text="${productList.category}"></div>
+            <div th:text="${productList.price}"></div>
+            <div th:text="${productList.quantity}"></div>
+            <div>--------------------------------------------------------------</div>
+        </div>
+    </div>
 
-
+<!--<tr th:each="userData : ${userData}" th:object="${userData}">
+            <td th:text="${userData.email}">email</td>
+        </tr>-->
 
 
     <div>

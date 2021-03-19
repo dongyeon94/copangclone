@@ -15,10 +15,13 @@
         <h2>회원 정보를 입력해 주세요</h2>
     </div>
     <div>
-        <form action="/login" method="post">
+        <form action="/user/signup" method="post">
             <div><input type="email" name="email" placeholder="아이디(이메일)"></div>
             <div><input type="password" name="password" placeholder="비밀번호()"></div>
-            <div><input type="submit" value="로그인"></div>
+            <div><input type="password" name="passwordcheck" placeholder="비밀번호 확인"></div>
+            <div><input type="text" name="nickName" placeholder="이름"></div>
+            <div><input type="number" name="phoneNumber" placeholder="휴대폰 번호"></div>
+            <div><input type="submit" value="가입하기"></div>
         </form>
     </div>
 
@@ -26,11 +29,4 @@
         <div th:replace="layout/footer :: footer"></div>
     </div>
 </body>
-<!--<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>-->
-<script>
-    var result = [[${errorcode}]];
-    if (result == 404) {
-        alert('아이디 비밀번호를 확인하세요!');
-    }
-</script>
 </html>
