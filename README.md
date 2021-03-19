@@ -8,3 +8,14 @@ clonecoding
 - 상품 등록 기본틀
 - html layout
 
+
+## 2일차
+#### 추가된 내용
+- user update
+
+
+#### 수정된 내용
+user URL 수정 /user/ prefix적용
+- login
+- mypage
+- ..
