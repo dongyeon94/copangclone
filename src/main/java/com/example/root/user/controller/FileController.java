@@ -21,8 +21,8 @@ public class FileController {
         try {
             System.out.println(fileUpload1.toString());
             for (MultipartFile f1 :fileUpload1){
-                System.out.println(f1.getOriginalFilename());
-                System.out.println(f1.getSize());
+                System.out.println("file name : " + f1.getOriginalFilename());
+                System.out.println("file size : " + f1.getSize());
             }
         }catch (Exception e){
             System.out.println("error : " + e.getMessage());
