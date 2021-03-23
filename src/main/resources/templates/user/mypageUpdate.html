@@ -17,6 +17,7 @@
         <form action="/user/update" method="post">
             <div th:each="userData :${userData}" th:object="${userData}">
                 <input type="text" th:value="${userData.email}" name="email">
+                <input type="text" th:value="${userData.nickName}" name="nickName">
                 <input type="text" th:value="${userData.address}" name="address">
                 <input type="text" th:value="${userData.password}" name="password">
                 <input type="text" th:value="${userData.phoneNumber}" name="phoneNumber">
