@@ -1,9 +1,13 @@
 package com.example.root.user.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 
 
 @Slf4j
@@ -17,15 +21,17 @@ public class FileController {
 
     @PostMapping("/file/upload")
     public String uploadFile(MultipartFile[] fileUpload1) throws Exception {
-        System.out.println(fileUpload1);
+        String uploadPath = "/Users/dy/programming/springproject/copangclone/src/main/resources/static/image/product/";
         try {
-            System.out.println(fileUpload1.toString());
             for (MultipartFile f1 :fileUpload1){
-                System.out.println("file name : " + f1.getOriginalFilename());
-                System.out.println("file size : " + f1.getSize());
+                File saveFile = new File(uploadPath,f1.getOriginalFilename());
+                f1.transferTo(saveFile);
+
+                log.info("file name : "+ f1.getOriginalFilename());
+                log.info("file size : "+ f1.getSize());
             }
         }catch (Exception e){
-            System.out.println("error : " + e.getMessage());
+            log.info("error : " + e.getMessage());
         }
         return "redirect:/file/upload";
     }

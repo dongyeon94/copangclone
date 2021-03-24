@@ -24,5 +24,6 @@ public class ProductEntity {
     private String      category;
     private Long        price;
     private Long        quantity;
+    private String      description;
 
 }

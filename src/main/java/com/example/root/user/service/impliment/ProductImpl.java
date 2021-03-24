@@ -17,17 +17,12 @@ public class ProductImpl implements ProductorService {
 
     @Override
     public int createProduct(ProductEntity productEntity) {
-        ProductEntity newPro = new ProductEntity();
-        newPro.setName(productEntity.getName());
-        newPro.setPrice(productEntity.getPrice());
-        newPro.setQuantity(productEntity.getQuantity());
-        newPro.setCategory(productEntity.getCategory());
-        productRepo.save(newPro);
+        productRepo.save(productEntity);
         return ErrorsCodeDefine.SUSSESS;
     }
 
     @Override
-    public List<ProductEntity> readAllProduct() {
+    public List<ProductEntity>readAllProduct() {
         List<ProductEntity> productList = productRepo.findAll();
         return productList;
     }
