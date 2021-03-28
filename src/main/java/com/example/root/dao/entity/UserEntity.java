@@ -24,5 +24,6 @@ public class UserEntity {
     private String      nickName;
     private String      address;
     private String      phoneNumber;
+    private String      authority;
 
 }

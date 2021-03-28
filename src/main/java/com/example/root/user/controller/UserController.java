@@ -33,20 +33,20 @@ public class UserController {
         return userPage + "login";
     }
 
-    @PostMapping("/login")
-    public String loginEvent(UserEntity user, Model model){
-        int result = userServiceimpl.login(user);
-        if (result == 200) {
-            model.addAttribute("errorcode",result);
-            UserEntity users = userServiceimpl.read(user);
-            model.addAttribute("userData", users);
-            return userPage + "mypage";
-        }
-        else{
-            model.addAttribute("errorcode",result);
-            return userPage + "login";
-        }
-    }
+//    @PostMapping("/login")
+//    public String loginEvent(UserEntity user, Model model){
+//        int result = userServiceimpl.login(user);
+//        if (result == 200) {
+//            model.addAttribute("errorcode",result);
+//            UserEntity users = userServiceimpl.read(user);
+//            model.addAttribute("userData", users);
+//            return userPage + "mypage";
+//        }
+//        else{
+//            model.addAttribute("errorcode",result);
+//            return userPage + "login";
+//        }
+//    }
 
     @GetMapping("/signup")
     public String signUpUser(){
@@ -58,6 +58,7 @@ public class UserController {
         if (userServiceimpl.create(user) == 200) {
             return "redirect:/";
         }
+
         else{
             return "redirect:/user/signup";
         }
