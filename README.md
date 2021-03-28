@@ -50,3 +50,13 @@ user URL 수정 /user/ prefix적용
 
 #### 수정된 내용
 - upload file controller 수정
+
+
+## 6일차
+#### 추가된 내용
+- security
+
+
+#### 수정된 내용
+- post method delete (user/login)
+- userserviceimpl (userdetailservice add)
