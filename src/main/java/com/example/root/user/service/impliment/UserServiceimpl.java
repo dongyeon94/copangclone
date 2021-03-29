@@ -34,6 +34,7 @@ public class UserServiceimpl implements UserService , UserDetailsService {
     @Override
     public int create(UserEntity user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setAuthority("ROLE_USER");
         userDataRepo.save(user);
         return ErrorsCodeDefine.SUSSESS;
     }
