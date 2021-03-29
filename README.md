@@ -60,3 +60,13 @@ user URL 수정 /user/ prefix적용
 #### 수정된 내용
 - post method delete (user/login)
 - userserviceimpl (userdetailservice add)
+
+
+## 7일차
+#### 추가된 내용
+- isAutencated()
+
+
+#### 수정된 내용
+- pom.xml
+- top.html layout
