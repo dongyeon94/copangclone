@@ -70,3 +70,13 @@ user URL 수정 /user/ prefix적용
 #### 수정된 내용
 - pom.xml
 - top.html layout
+
+## 8일차
+#### 추가된 내용
+- principal
+- remember-me
+
+
+#### 수정된 내용
+- user login시 유저 nick 네임 nav bar에 표시
+- user nickname 클릭시 유저 마이페이지로 
