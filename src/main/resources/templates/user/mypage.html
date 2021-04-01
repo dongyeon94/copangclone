@@ -10,10 +10,12 @@
 
     <h2>mypage</h2>
     userData
+
+
     <div>
-<!--        tr th:each="userData : ${userData}" th:object="${userData}">
+        <tr th:each="userData : ${userData}" th:object="${userData}">
             <td th:text="${userData.email}">email</td>
-        </tr>-->
+        </tr>
         <form action="/user/update" method="get">
             <input type="hidden" th:value="${userData.email}" name="email">
             <input type="submit" value="변경하기">
@@ -23,11 +25,13 @@
                 <div th:text="${userData.id}"></div>
                 <div th:text="${userData.email}"></div>
                 <div th:text="${userData.address}"></div>
-                <div th:text="${userData.password}"></div>
                 <div th:text="${userData.id}"></div>
             </div>
         </form>
+
     </div>
+
+
 
     <div>
         <div th:replace="layout/footer :: footer"></div>

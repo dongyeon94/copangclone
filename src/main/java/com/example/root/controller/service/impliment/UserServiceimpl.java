@@ -1,30 +1,38 @@
-package com.example.root.user.service.impliment;
+package com.example.root.controller.service.impliment;
 
+import com.example.root.configs.CustomUser;
+import com.example.root.configs.UserAccount;
 import com.example.root.dao.repo.UserDataRepo;
 import com.example.root.dao.entity.UserEntity;
 import com.example.root.errorcode.ErrorsCodeDefine;
-import com.example.root.user.service.interfaces.UserService;
+import com.example.root.controller.service.interfaces.UserService;
+import com.mysql.cj.xdevapi.SessionFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.management.Query;
+import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class UserServiceimpl implements UserService , UserDetailsService {
+
 
     @Autowired
     private UserDataRepo userDataRepo;
@@ -40,8 +48,8 @@ public class UserServiceimpl implements UserService , UserDetailsService {
     }
 
     @Override
-    public UserEntity read(UserEntity user) {
-        return userDataRepo.findByEmail(user.getEmail());
+    public UserEntity read(String eamil) {
+        return userDataRepo.findByEmail(eamil);
     }
 
     @Override
@@ -65,24 +73,40 @@ public class UserServiceimpl implements UserService , UserDetailsService {
         return ErrorsCodeDefine.SUSSESS;
     }
 
-    @Override
-    public int login(UserEntity user) {
-        UserEntity findUser = userDataRepo.findByEmail(user.getEmail());
-        if (findUser != null) {
-            return ErrorsCodeDefine.SUSSESS;
-        }
-        return ErrorsCodeDefine.NOT_FOUND;
-    }
+//    @Override
+//    public int login(UserEntity user) {
+//
+//        UserEntity findUser = userDataRepo.findByEmail(user.getEmail());
+//        if (findUser != null) {
+//            return ErrorsCodeDefine.SUSSESS;
+//        }
+//        return ErrorsCodeDefine.NOT_FOUND;
+//    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UserEntity users =  userDataRepo.findByEmail(email);
-        if (users == null) {
+
+        UserEntity userEntity =  userDataRepo.findByEmail(email);
+        if (userEntity == null) {
             log.info("user null");
             throw new UsernameNotFoundException(email);
         }
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(users.getAuthority()));
-        return new User(users.getEmail(), users.getPassword(), authorities);
+        CustomUser customUser = new CustomUser(userEntity);
+        customUser.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(userEntity.getAuthority())));
+        customUser.setEnabled(true);
+        customUser.setAccountNonLocked(true);
+        customUser.setAccountNonExpired(true);
+        customUser.setCredentialsNonExpired(true);
+
+        return customUser;
+
+    }
+
+    public void login(UserEntity userEntity){
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+                                        new UserAccount(userEntity,userEntity.getEmail()),
+                                        userEntity.getPassword(),
+                                        Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+        SecurityContextHolder.getContext().setAuthentication(token);
     }
 }

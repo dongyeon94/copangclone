@@ -1,4 +1,4 @@
-package com.example.root.user.service;
+package com.example.root.controller.service;
 
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;

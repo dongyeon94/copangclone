@@ -1,7 +1,7 @@
-package com.example.root.user.controller;
+package com.example.root.controller.controller;
 
 import com.example.root.dao.entity.ProductEntity;
-import com.example.root.user.service.impliment.ProductImpl;
+import com.example.root.controller.service.impliment.ProductImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

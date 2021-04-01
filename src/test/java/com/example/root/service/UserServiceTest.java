@@ -2,7 +2,7 @@ package com.example.root.service;
 
 
 import com.example.root.MockMvcTest;
-import com.example.root.user.service.impliment.UserServiceimpl;
+import com.example.root.controller.service.impliment.UserServiceimpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;

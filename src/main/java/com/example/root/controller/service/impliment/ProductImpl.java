@@ -1,9 +1,9 @@
-package com.example.root.user.service.impliment;
+package com.example.root.controller.service.impliment;
 
 import com.example.root.dao.entity.ProductEntity;
 import com.example.root.dao.repo.ProductRepo;
 import com.example.root.errorcode.ErrorsCodeDefine;
-import com.example.root.user.service.interfaces.ProductorService;
+import com.example.root.controller.service.interfaces.ProductorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

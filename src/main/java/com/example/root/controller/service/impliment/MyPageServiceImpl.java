@@ -1,6 +1,6 @@
-package com.example.root.user.service.impliment;
+package com.example.root.controller.service.impliment;
 
-import com.example.root.user.service.interfaces.MypageService;
+import com.example.root.controller.service.interfaces.MypageService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

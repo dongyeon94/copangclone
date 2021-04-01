@@ -1,4 +1,4 @@
-package com.example.root.user.service.interfaces;
+package com.example.root.controller.service.interfaces;
 
 import java.util.List;
 
