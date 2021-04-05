@@ -74,25 +74,8 @@
     <div style="height: 100px;"></div>
 
 
-    <div class="data-view-area">
+    <div class="data-view-area" style="border: solid black 1px;"><div>
 
-<!--        <tr th:each="userData : ${userData}" th:object="${userData}">-->
-<!--            <td th:text="${userData.email}">email</td>-->
-<!--        </tr>-->
-<!--        <form action="/user/update" method="get">-->
-<!--            <input type="hidden" th:value="${userData.email}" name="email">-->
-<!--            <input type="submit" value="변경하기">-->
-
-
-<!--            <div th:each="userData :${userData}" th:object="${userData}">-->
-<!--                <div th:text="${userData.id}"></div>-->
-<!--                <div th:text="${userData.email}"></div>-->
-<!--                <div th:text="${userData.address}"></div>-->
-<!--                <div th:text="${userData.id}"></div>-->
-<!--            </div>-->
-<!--        </form>-->
-    <div>
-        <button  onclick="mypageAjax()">button</button>
     </div>
     </div>
 
@@ -111,13 +94,25 @@
             url  : "/user/mypage/myInfo",
             dataType : "json",
             success : function (data){
-                console.log(data);
+                console.log("my page");
+
+                $('.data-view-area *').remove();
+
+                $('.data-view-area').append("<table class='mypage-table'>");
+                for (ind in data) {
+                    $('.mypage-table').append("<tr>");
+                    $('.mypage-table').append("<td>" + ind + "</td><td>" + data[ind] + "</td>");
+                    $('.mypage-table').append("<tr>");
+                }
+                $('.data-view-area').append("</table>");
             },
             error : function (error) {
                 console.log("error : " + error);
             },
         });
     }
+
+
 </script>
 <script>
     function mybuylistAjax(){
@@ -126,7 +121,20 @@
             url  : "/product/users/buy",
             dataType : "json",
             success : function (data){
-                console.log(data);
+                console.log("mybuy list");
+
+                $('.data-view-area *').remove();
+
+                $('.data-view-area').append("<table class='mypage-table'>");
+                for (ind in data) {
+                    for (ind2 in data[ind]) {
+                        $('.mypage-table').append("<tr>");
+                        $('.mypage-table').append("<td>" + ind2 + "</td><td>" + data[ind][ind2] + "</td>");
+                        $('.mypage-table').append("<tr>");
+                    }
+                }
+                $('.data-view-area').append("</table>");
+
             },
             error : function (error) {
                 console.log("error : " + error);
