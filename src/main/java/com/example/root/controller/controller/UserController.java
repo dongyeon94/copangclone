@@ -1,6 +1,5 @@
 package com.example.root.controller.controller;
 
-
 import com.example.root.configs.CustomUser;
 import com.example.root.dao.entity.UserEntity;
 import com.example.root.controller.service.impliment.UserServiceimpl;
@@ -25,19 +24,20 @@ public class UserController {
 
     @GetMapping("/mypage")
     public String myPage(@AuthenticationPrincipal CustomUser userEntity, Model model){
-        System.out.println(userEntity.getEmail());
         model.addAttribute("userData",userServiceimpl.read(userEntity.getEmail()));
         return userPage + "mypage";
     }
 
     @PostMapping("/mypage/myInfo")
     @ResponseBody
-    public UserEntity myInfo(@AuthenticationPrincipal CustomUser userEntity, Model model){
-        System.out.println(userEntity.getEmail());
-//        model.addAttribute("userData",userServiceimpl.read(userEntity.getEmail()));
+    public UserEntity myInfo(@AuthenticationPrincipal CustomUser userEntity){
         return userServiceimpl.read(userEntity.getEmail());
     }
 
+    @GetMapping("/mypage/buketList")
+    public String buketList(){
+        return userPage + "buketlist";
+    }
 
 
     @GetMapping("/login")
@@ -53,16 +53,15 @@ public class UserController {
     @PostMapping("/signup")
     public String signUpEvent(UserEntity user) {
         if (userServiceimpl.create(user) == 200) {
-            return "redirect:/";
+            return "index";
         }
-
         else{
             return "redirect:/user/signup";
         }
     }
 
     @GetMapping("/update")
-    public String updateUser (UserEntity userEntity, Model model) {
+    public String updateUser (@AuthenticationPrincipal CustomUser userEntity, Model model) {
         UserEntity users = userServiceimpl.read(userEntity.getEmail());
         model.addAttribute("userData", users);
         return userPage + "mypageUpdate";

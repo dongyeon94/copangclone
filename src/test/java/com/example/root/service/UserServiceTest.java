@@ -3,6 +3,7 @@ package com.example.root.service;
 
 import com.example.root.MockMvcTest;
 import com.example.root.controller.service.impliment.UserServiceimpl;
+import com.example.root.dao.entity.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,10 +19,21 @@ public class UserServiceTest {
     UserServiceimpl userServiceimpl;
 
     @Test
-    void createTest() throws Exception{
+    void createTest() throws Exception {
         mockMvc.perform(post("/user/signup")
-                            .param("email","test@a.com")
+                            .param("email","dy@naver.com")
+                            .param("password","1234"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void loginTest() throws Exception {
+        mockMvc.perform(post("/user/login")
+                            .param("email","dongyeon94@naver.com")
                             .param("password","1234"))
                 .andExpect(status().is3xxRedirection());
     }
+
+
+
 }

@@ -16,7 +16,7 @@
             </section>
             <section class="top-bar-section" sec:authorize="isAuthenticated()">
                 <span class="user-login-section">
-                    <a th:href="@{/user/mypage}" sec:authentication="principal.username">user님</a>
+                    <a th:href="@{/user/mypage}" sec:authentication="principal.username" style="font-weight: bold">user</a>님
                     <a th:href="@{/logout}">logout</a>
                     <a th:href="@{/}">고객센터</a>
                 </span>
@@ -36,9 +36,7 @@
                 <input class="search-submit" type="submit" value="검색">
             </form>
             <a class="top-mypage-button" th:href="@{/user/mypage}"><img th:src="@{/image/logo.png}" width="50" height="30"></a>
-            <a class="top-bucket-button" ><img th:src="@{/image/logo.png}" width="50" height="30"></a>
-<!--            <button class="mypopang-button" onclick="">마이코팡</button>-->
-<!--            <button class="buket-button">장바구니</button>-->
+            <a class="top-bucket-button" th:href="@{/user/mypage/buketList}"><img th:src="@{/image/logo.png}" width="50" height="30"></a>
         </article>
     </header>
 

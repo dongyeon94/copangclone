@@ -1,5 +1,6 @@
 package com.example.root.controller.controller;
 
+import com.example.root.controller.service.impliment.ProductQdslIml;
 import com.example.root.dao.entity.ProductEntity;
 import com.example.root.controller.service.impliment.ProductImpl;
 import com.example.root.dao.entity.UserEntity;
@@ -20,6 +21,9 @@ public class ProductController {
 
     @Autowired
     private ProductImpl product;
+
+    @Autowired
+    private ProductQdslIml prods;
 
     @GetMapping("/read")
     public String searchProduct(Model model) {
@@ -46,4 +50,9 @@ public class ProductController {
         return product.readAllProduct();
     }
 
+    @GetMapping("/test")
+    public String testMethod(){
+        prods.findRecently();
+        return "redirect:/product/read";
+    }
 }
