@@ -1,6 +1,6 @@
 package com.example.root.controller.controller;
 
-import com.example.root.controller.service.impliment.ProductQdslIml;
+import com.example.root.controller.service.impliment.ProductDsqlIml;
 import com.example.root.dao.entity.ProductEntity;
 import com.example.root.controller.service.impliment.ProductImpl;
 import com.example.root.dao.entity.UserEntity;
@@ -23,7 +23,7 @@ public class ProductController {
     private ProductImpl product;
 
     @Autowired
-    private ProductQdslIml prods;
+    private ProductDsqlIml prods;
 
     @GetMapping("/read")
     public String searchProduct(Model model) {
