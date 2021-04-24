@@ -50,33 +50,28 @@ a:hover {
     width: 100%;
     margin-top: 30px;
 }
-.search-form-select {
-    width: 50px;
-    height: 37px;
-}
 .search-input-text {
     position: absolute;
     width: 333px;
     height: 37px;
+
 }
 .search-submit {
     display: inline;
     position: absolute;
-    margin-left: 332px;
-    width: 50px;
-    height: 37px;
+    margin-left: 335px;
 }
 .top-mypage-button {
     display: inline;
     position: absolute;
     margin-top: 30px;
-    left: 850px;
+    left: 800px;
 }
 .top-bucket-button {
     display: inline;
     position: absolute;
     margin-top: 30px;
-    left: 930px;
+    left: 900px;
 }
 
 

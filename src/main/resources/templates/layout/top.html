@@ -4,7 +4,7 @@
       xmlns:pro="http://www.springframework.org/security/tags">
 
 <div class="topmenu" th:fragment="topmenu">
-    <header class="top-section">
+    <section class="top-section">
 
         <article class="top-bar">
             <section class="top-bar-section" sec:authorize="!isAuthenticated()">
@@ -25,7 +25,7 @@
 
         <article class="search-section">
             <button class="category-button">카테고리</button>
-            <a th:href="@{/}"><img th:src="@{/image/logo.png}" width="174" height="41"></a>
+            <a th:href="@{/}"><img class="logo-test" th:src="@{/image/layout/logo.png}" width="174" height="41"></a>
             <form class="search-form">
                 <select class="search-form-select">
                     <option>1</option>
@@ -35,10 +35,10 @@
                 <input class="search-input-text" type="text">
                 <input class="search-submit" type="submit" value="검색">
             </form>
-            <a class="top-mypage-button" th:href="@{/user/mypage}"><img th:src="@{/image/logo.png}" width="50" height="30"></a>
-            <a class="top-bucket-button" th:href="@{/user/mypage/buketList}"><img th:src="@{/image/logo.png}" width="50" height="30"></a>
+            <a class="top-mypage-button" th:href="@{/user/mypage}"><img th:src="@{/image/layout/profile.PNG}" width="60" height="60"></a>
+            <a class="top-bucket-button" th:href="@{/user/mypage/buketList}"><img th:src="@{/image/layout/cart.png}" width="60" height="60"></a>
         </article>
-    </header>
+    </section>
 
 </div>
 
