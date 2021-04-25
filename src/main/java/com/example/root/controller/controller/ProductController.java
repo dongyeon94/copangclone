@@ -4,16 +4,15 @@ import com.example.root.controller.service.impliment.ProductDsqlIml;
 import com.example.root.dao.entity.ProductEntity;
 import com.example.root.controller.service.impliment.ProductImpl;
 import com.example.root.dao.entity.UserEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @Controller
 @RequestMapping("/product")
 public class ProductController {
@@ -23,7 +22,9 @@ public class ProductController {
     private ProductImpl product;
 
     @Autowired
-    private ProductDsqlIml prods;
+    private ProductDsqlIml productDsqlIml;
+
+
 
     @GetMapping("/read")
     public String searchProduct(Model model) {
@@ -44,15 +45,29 @@ public class ProductController {
         return "redirect:/product/create";
     }
 
+    @GetMapping("/search/")
+    public String searchProductPage(String item, Model model){
+        log.info(item + " : " + productDsqlIml.searchIteam(item));
+        model.addAttribute("products",productDsqlIml.searchIteam(item));
+        return productPage + "search";
+    }
+
+    @GetMapping("/category/{cate}")
+    public String searchCategory(@PathVariable("cate") String cate, Model model) {
+        log.info(cate + " : " + productDsqlIml.searchIteam(cate));
+        model.addAttribute("products",productDsqlIml.searchIteam(cate));
+        return productPage + "search";
+    }
+
     @PostMapping("/users/buy")
     @ResponseBody
-    public List readMyBuyProduct(UserEntity userEntity){
+    public List readMyBuyProduct(){
         return product.readAllProduct();
     }
 
     @GetMapping("/test")
     public String testMethod(){
-        prods.findRecently();
+        productDsqlIml.findRecently();
         return "redirect:/product/read";
     }
 }

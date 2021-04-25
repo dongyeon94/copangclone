@@ -6,25 +6,18 @@ import com.example.root.dao.repo.UserDataRepo;
 import com.example.root.dao.entity.UserEntity;
 import com.example.root.errorcode.ErrorsCodeDefine;
 import com.example.root.controller.service.interfaces.UserService;
-import com.mysql.cj.xdevapi.SessionFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.management.Query;
-import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 
 
@@ -72,16 +65,6 @@ public class UserServiceimpl implements UserService , UserDetailsService {
     public int delete(UserEntity user) {
         return ErrorsCodeDefine.SUSSESS;
     }
-
-//    @Override
-//    public int login(UserEntity user) {
-//
-//        UserEntity findUser = userDataRepo.findByEmail(user.getEmail());
-//        if (findUser != null) {
-//            return ErrorsCodeDefine.SUSSESS;
-//        }
-//        return ErrorsCodeDefine.NOT_FOUND;
-//    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
