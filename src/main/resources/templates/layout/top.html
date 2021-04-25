@@ -2,10 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:pro="http://www.springframework.org/security/tags">
-
 <div class="topmenu" th:fragment="topmenu">
     <section class="top-section">
-
         <article class="top-bar">
             <section class="top-bar-section" sec:authorize="!isAuthenticated()">
                 <span class="user-login-section">
@@ -22,17 +20,21 @@
                 </span>
             </section>
         </article>
+    </section>
+</div>
+<div class="searchmenu" th:fragment="searchmenu">
+    <section class="top-section">
 
         <article class="search-section">
             <button class="category-button">카테고리</button>
             <a th:href="@{/}"><img class="logo-test" th:src="@{/image/layout/logo.png}" width="174" height="41"></a>
-            <form class="search-form">
+            <form class="search-form" method="get" action="/product/search/">
                 <select class="search-form-select">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
                 </select>
-                <input class="search-input-text" type="text">
+                <input class="search-input-text" type="text" name="item">
                 <input class="search-submit" type="submit" value="검색">
             </form>
             <a class="top-mypage-button" th:href="@{/user/mypage}"><img th:src="@{/image/layout/profile.PNG}" width="60" height="60"></a>

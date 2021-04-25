@@ -6,8 +6,10 @@
 <body>
     <div>
         <div th:replace="layout/top :: topmenu"></div>
+        <div th:replace="layout/top :: searchmenu"></div>
     </div>
 
+    <div style="height: 250px">&nbsp;</div>
     <h2>mypage</h2>
 
     <div>
@@ -75,45 +77,41 @@
     <div style="height: 100px;"></div>
 
 
-    <div class="data-view-area" style="border: solid black 1px;"><div>
-
-    </div>
-    </div>
+    <div class="data-view-area" style="border: solid black 1px;"></div>
 
 
 
-    <div>
-        <div th:replace="layout/footer :: footer"></div>
-    </div>
+    <div th:replace="layout/footer :: footer"></div>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
 <script>
-    function mypageAjax(){
-        $.ajax({
-            type : "POST",
-            url  : "/user/mypage/myInfo",
-            dataType : "json",
-            success : function (data){
-                console.log("my page");
+function mypageAjax(){
+    $.ajax({
+        type : "POST",
+        url  : "/user/mypage/myInfo",
+        dataType : "json",
+        success : function (data){
+            console.log("my page");
 
-                $('.data-view-area *').remove();
+            $('.data-view-area *').remove();
 
-                $('.data-view-area').append("<table class='mypage-table'>");
-                for (ind in data) {
-                    $('.mypage-table').append("<tr>");
-                    $('.mypage-table').append("<td>" + ind + "</td><td>" + data[ind] + "</td>");
-                    $('.mypage-table').append("<tr>");
-                }
-                $('.data-view-area').append("</table>");
-            },
-            error : function (error) {
-                console.log("error : " + error);
-            },
-        });
-    }
-
-
+            $('.data-view-area').append("<table class='mypage-table'>");
+            for (ind in data) {
+                $('.mypage-table').append("<tr>");
+                $('.mypage-table').append("<td>" + ind + "</td><td>" + data[ind] + "</td>");
+                $('.mypage-table').append("<tr>");
+            }
+            $('.data-view-area').append("</table>");
+        },
+        error : function (error) {
+            console.log("error : " + error);
+        },
+    });
+}
 </script>
 <script>
     function mybuylistAjax(){

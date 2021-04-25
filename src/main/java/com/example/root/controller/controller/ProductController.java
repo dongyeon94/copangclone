@@ -7,10 +7,7 @@ import com.example.root.dao.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +20,9 @@ public class ProductController {
     private ProductImpl product;
 
     @Autowired
-    private ProductDsqlIml prods;
+    private ProductDsqlIml productDsqlIml;
+
+
 
     @GetMapping("/read")
     public String searchProduct(Model model) {
@@ -44,15 +43,23 @@ public class ProductController {
         return "redirect:/product/create";
     }
 
-    @PostMapping("/users/buy")
+    @GetMapping("/search/")
+    public String searchPage(String item){
+        System.out.println(item);
+        System.out.println(productDsqlIml.searchIteam(item));
+
+        return productPage + "search";
+    }
+
+    @GetMapping("/users/buy")
     @ResponseBody
-    public List readMyBuyProduct(UserEntity userEntity){
+    public List readMyBuyProduct(){
         return product.readAllProduct();
     }
 
     @GetMapping("/test")
     public String testMethod(){
-        prods.findRecently();
+        productDsqlIml.findRecently();
         return "redirect:/product/read";
     }
 }
