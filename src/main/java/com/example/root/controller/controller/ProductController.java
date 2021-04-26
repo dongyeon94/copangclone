@@ -44,10 +44,10 @@ public class ProductController {
     }
 
     @GetMapping("/search/")
-    public String searchPage(String item){
+    public String searchPage(String item, Model model){
         System.out.println(item);
         System.out.println(productDsqlIml.searchIteam(item));
-
+        model.addAttribute("products",productDsqlIml.searchIteam(item));
         return productPage + "search";
     }
 

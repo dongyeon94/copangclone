@@ -16,7 +16,15 @@
     <div style="height: 150px;"></div>
 
     <div>
-        <div></div>
+        <h2>Main</h2>
+        <div th:each="products : ${products}" th:object="${products}">
+            <div th:text="${products.id}"></div>
+            <div th:text="${products.name}"></div>
+            <div th:text="${products.category}"></div>
+            <div th:text="${products.price}"></div>
+            <div th:text="${products.quantity}"></div>
+            <div th:text="${products.description}"></div>
+            <div>--------------------------------------------------------------</div>
     </div>
 
     <div style="height: 150px;"></div>
