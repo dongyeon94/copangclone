@@ -4,6 +4,7 @@ import com.example.root.controller.service.impliment.ProductDsqlIml;
 import com.example.root.dao.entity.ProductEntity;
 import com.example.root.controller.service.impliment.ProductImpl;
 import com.example.root.dao.entity.UserEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @Controller
 @RequestMapping("/product")
 public class ProductController {
@@ -44,10 +46,16 @@ public class ProductController {
     }
 
     @GetMapping("/search/")
-    public String searchPage(String item, Model model){
-        System.out.println(item);
-        System.out.println(productDsqlIml.searchIteam(item));
+    public String searchProductPage(String item, Model model){
+        log.info(item + " : " + productDsqlIml.searchIteam(item));
         model.addAttribute("products",productDsqlIml.searchIteam(item));
+        return productPage + "search";
+    }
+
+    @GetMapping("/category/{cate}")
+    public String searchCategory(@PathVariable("cate") String cate, Model model) {
+        log.info(cate + " : " + productDsqlIml.searchIteam(cate));
+        model.addAttribute("products",productDsqlIml.searchIteam(cate));
         return productPage + "search";
     }
 

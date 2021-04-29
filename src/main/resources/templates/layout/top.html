@@ -26,7 +26,15 @@
     <section class="top-section">
 
         <article class="search-section">
-            <button class="category-button">카테고리</button>
+            <li class="category-list">
+                <button class="category-button">카테고리</button>
+                <ul class="category-event">
+                    <li><a class="A-category" href="http://localhost:8080/product/category/카테">1</a></li>
+                    <li><a class="A-category" href="http://localhost:8080/product/category/카테">2</a></li>
+                    <li><a class="A-category" href="http://localhost:8080/product/category/카테">3</a></li>
+                    <li><a class="A-category" href="http://localhost:8080/product/category/카테">4</a></li>
+                </ul>
+            </li>
             <a th:href="@{/}"><img class="logo-test" th:src="@{/image/layout/logo.png}" width="174" height="41"></a>
             <form class="search-form" method="get" action="/product/search/">
                 <select class="search-form-select">
@@ -41,7 +49,10 @@
             <a class="top-bucket-button" th:href="@{/user/mypage/buketList}"><img th:src="@{/image/layout/cart.png}" width="60" height="60"></a>
         </article>
     </section>
-
+    <script>
+        $(".category-button").mouseenter("");
+        $(".category-button").mouseleave("");
+    </script>
 </div>
 
 </html>

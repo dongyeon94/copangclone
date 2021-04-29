@@ -12,6 +12,31 @@ a:hover {
 }
 
 /* top */
+.category-list {
+    display:inline;
+}
+.category-event {
+    position: absolute;
+    list-style-type: none;
+    text-decoration: none;
+    height: 0px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.category-list:hover .category-event {
+    height: 90px;
+    background-color: #EEEBEB;
+    width: 100px;
+    border: 1px solid black;
+}
+.A-category {
+    text-decoration: none;
+    display: block;
+    width: 100px;
+    border: 1px solid black;
+    float: left;
+}
 .top-bar {
     background-color: #EEEBEB;
     width: 100%;
