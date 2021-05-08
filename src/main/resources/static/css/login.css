@@ -1,0 +1,10 @@
+.login-view-label {
+/*     margin-left:100px; */
+    padding-top:100px;
+    text-align:center;
+
+}
+
+.login-form > input{
+    width:500px;
+}

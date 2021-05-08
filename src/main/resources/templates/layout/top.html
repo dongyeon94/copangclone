@@ -3,27 +3,27 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:pro="http://www.springframework.org/security/tags">
 <div class="topmenu" th:fragment="topmenu">
-    <section class="top-section">
+    <section class="top-section-bar">
         <article class="top-bar">
             <section class="top-bar-section" sec:authorize="!isAuthenticated()">
                 <span class="user-login-section">
-                    <a th:href="@{/user/login}">로그인</a>
-                    <a th:href="@{/user/signup}">회원가입</a>
                     <a th:href="@{/}">고객센터</a>
+                    <a th:href="@{/user/signup}">회원가입</a>
+                    <a th:href="@{/user/login}">로그인</a>
                 </span>
             </section>
             <section class="top-bar-section" sec:authorize="isAuthenticated()">
                 <span class="user-login-section">
-                    <a th:href="@{/user/mypage}" sec:authentication="principal.username" style="font-weight: bold">user</a>님
-                    <a th:href="@{/logout}">logout</a>
                     <a th:href="@{/}">고객센터</a>
+                    <a th:href="@{/logout}">logout</a>
+                    <a th:href="@{/user/mypage}" sec:authentication="principal.username" style="font-weight: bold">user</a>
                 </span>
             </section>
         </article>
     </section>
 </div>
 <div class="searchmenu" th:fragment="searchmenu">
-    <section class="top-section">
+    <section class="top-section-search">
 
         <article class="search-section">
             <li class="category-list">
@@ -44,9 +44,9 @@
                 </select>
                 <input class="search-input-text" type="text" name="item">
                 <input class="search-submit" type="submit" value="검색">
+                <a class="top-mypage-button" th:href="@{/user/mypage}"><img th:src="@{/image/layout/profile.PNG}" width="60" height="60"></a>
+                <a class="top-bucket-button" th:href="@{/user/mypage/buketList}"><img th:src="@{/image/layout/cart.png}" width="60" height="60"></a>
             </form>
-            <a class="top-mypage-button" th:href="@{/user/mypage}"><img th:src="@{/image/layout/profile.PNG}" width="60" height="60"></a>
-            <a class="top-bucket-button" th:href="@{/user/mypage/buketList}"><img th:src="@{/image/layout/cart.png}" width="60" height="60"></a>
         </article>
     </section>
     <script>

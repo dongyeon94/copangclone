@@ -59,7 +59,7 @@ public class ProductController {
         return productPage + "search";
     }
 
-    @GetMapping("/users/buy")
+    @PostMapping("/users/buy")
     @ResponseBody
     public List readMyBuyProduct(){
         return product.readAllProduct();

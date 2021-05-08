@@ -1,20 +1,22 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
 
 <div class="footerinit" th:fragment="footer">
     <div class="footer-box">
-        <div id="footer-top">
-            footer
-        </div>
         <div id="footer-logo">
-            copang
+            <a th:href="@{/}"><img class="logo-test" th:src="@{/image/layout/logo.png}" width="174" height="41"></a>
+        </div>
+        <div id="footer-properties">
+            코팡(주) | 대표 : 김동연  </br>
+            서울시 강동구 양재대로 123길 </br>
+            등록번호
         </div>
         <address id="footer-address">
             강동구 양재대로 123길 30
         </address>
         <div id="footer-cs">
-            고객센터
+            고객센터 전화번호 <span>123-4567</span>
         </div>
     </div>
 </div>
