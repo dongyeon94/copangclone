@@ -3,30 +3,23 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/header :: headLinkInit"></head>
+<head>
+    <link rel="stylesheet" th:href="@{/css/signup.css}">
+</head>
 <body>
-    <div>
-        <div th:replace="layout/top :: topmenu"></div>
-    </div>
-
-    <div>
-        <h2>코팡 이미지</h2>
-    </div>
-    <div>
-        <h2>회원 정보를 입력해 주세요</h2>
-    </div>
-    <div>
-        <form action="/user/signup" method="post">
-            <div><input type="email" name="email" placeholder="아이디(이메일)"></div>
-            <div><input type="password" name="password" placeholder="비밀번호()"></div>
-            <div><input type="password" name="passwordcheck" placeholder="비밀번호 확인"></div>
-            <div><input type="text" name="nickName" placeholder="이름"></div>
-            <div><input type="number" name="phoneNumber" placeholder="휴대폰 번호"></div>
-            <div><input type="submit" value="가입하기"></div>
-        </form>
-    </div>
-
-    <div>
-        <div th:replace="layout/footer :: footer"></div>
+    <div class="signup-view-label">
+        <div>
+            <a th:href="@{/}"><img class="logo-test" th:src="@{/image/layout/logo.png}" width="174" height="41"></a><br>
+            <span>회원정보를 입력해 주세요</span><br>
+            <form class="signup-form" action="/user/signup" method="post">
+                <input type="email" name="email" placeholder="아이디(이메일)"><br>
+                <input type="password" name="password" placeholder="비밀번호()"><br>
+                <input type="password" name="passwordcheck" placeholder="비밀번호 확인"><br>
+                <input type="text" name="nickName" placeholder="이름"><br>
+                <input type="text" name="phoneNumber" placeholder="휴대폰 번호"><br>
+                <input id="signup-submit" type="submit" value="가입하기">
+            </form>
+        </div>
     </div>
 </body>
 </html>

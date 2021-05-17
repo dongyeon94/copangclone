@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/user")
@@ -60,6 +57,13 @@ public class UserController {
         }
     }
 
+    @GetMapping("/user/{username}/{token}")
+    public String accessUserEmailToken(@PathVariable("token") String token, @PathVariable("username") String username){
+        System.out.println(token);
+        System.out.println(username);
+        return "return/accessEmailToken";
+    }
+
     @GetMapping("/update")
     public String updateUser (@AuthenticationPrincipal CustomUser userEntity, Model model) {
         UserEntity users = userServiceimpl.read(userEntity.getEmail());
@@ -81,4 +85,14 @@ public class UserController {
         }
     }
 
+    @GetMapping("/findPassword")
+    public String findUserPasswordPage (String email) {
+        return userPage + "findPassword";
+    }
+
+    @PostMapping("/findPassword")
+    public String findUserPassword (String email) {
+        userServiceimpl.passwordInitialization(email);
+        return "redirect:/user/login";
+    }
 }

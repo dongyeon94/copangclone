@@ -1,12 +1,13 @@
-.login-view-label {
+.signup-view-label {
     padding-top:100px;
     text-align:center;
 }
 
-.login-form > input {
+.signup-form > input {
     width:500px;
     height:45px;
-    margin-bottom:15px;
+    margin-top:8px;
+    margin-bottom:8px;
 }
 .login-sign-in {
     width:500px;
@@ -17,21 +18,7 @@
     font-weight:bold;
 }
 
-#checkbox-input {
-}
-#rememberMe {
-    height:15px;
-    margin-bottom:15px;
-}
-#password-find {
-    color: #0754FB;  text-decoration: none;
-    padding-left:190px;
-}
-#password-find:hover {
-    color: #0754FB;  text-decoration: none;
-}
-
-#login-submit {
+#signup-submit {
     width:500px;
     height:45px;
     background-color:#0754FB;

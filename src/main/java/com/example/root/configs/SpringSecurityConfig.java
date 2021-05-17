@@ -26,7 +26,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
-                .mvcMatchers("/", "/login", "/signup", "/user/login", "/user/signup").permitAll()
+                .mvcMatchers("/", "/login", "/signup", "/user/login", "/user/signup"
+                            ,"/user/findPassword").permitAll()
                 .mvcMatchers(HttpMethod.GET,"/profile/*").permitAll()
                 .anyRequest().authenticated()
 

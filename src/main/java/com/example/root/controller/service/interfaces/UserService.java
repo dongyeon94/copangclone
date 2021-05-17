@@ -9,6 +9,7 @@ public interface UserService {
     public UserEntity read(String email);
     public int update(UserEntity user);
     public int delete(UserEntity user);
+    public int passwordInitialization(String email);
 
 //    public int login(UserEntity user);
 }

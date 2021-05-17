@@ -8,6 +8,7 @@ import com.example.root.errorcode.ErrorsCodeDefine;
 import com.example.root.controller.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -50,7 +51,7 @@ public class UserServiceimpl implements UserService , UserDetailsService {
     public int update(UserEntity user) {
         UserEntity findUser = userDataRepo.findByEmail(user.getEmail());
         if (findUser != null && findUser.getPassword().equals(user.getPassword())){
-            findUser.setPassword(user.getPassword());
+            findUser.setPassword(passwordEncoder.encode(user.getPassword()));
             findUser.setNickName(user.getNickName());
             findUser.setAddress(user.getAddress());
             findUser.setPhoneNumber(user.getPhoneNumber());
@@ -65,6 +66,21 @@ public class UserServiceimpl implements UserService , UserDetailsService {
     public int delete(UserEntity user) {
         return ErrorsCodeDefine.SUSSESS;
     }
+
+    @Override
+    @Transactional
+    public int passwordInitialization(String email) {
+        UserEntity findUser = userDataRepo.findByEmail(email);
+        if (findUser != null) {
+            int randRange = Integer.parseInt(RandomStringUtils.randomNumeric(2));
+            String value = RandomStringUtils.randomAlphabetic(randRange);
+            System.out.println("password :: " + value);
+            findUser.setPassword(passwordEncoder.encode(value));
+            userDataRepo.save(findUser);
+        }
+        return 0;
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
