@@ -3,6 +3,8 @@ package com.example.root.controller.controller;
 import com.example.root.configs.CustomUser;
 import com.example.root.dao.entity.UserEntity;
 import com.example.root.controller.service.impliment.UserServiceimpl;
+import com.example.root.errorcode.ErrorsCodeDefine;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@Slf4j
 @RequestMapping("/user")
 public class UserController {
 
@@ -94,5 +97,23 @@ public class UserController {
     public String findUserPassword (String email) {
         userServiceimpl.passwordInitialization(email);
         return "redirect:/user/login";
+    }
+
+    @GetMapping("/eamilverified/{token}")
+    public String emailVerified(@PathVariable("token") String token, @AuthenticationPrincipal CustomUser userEntity){
+        if (userServiceimpl.userActivated(userEntity.getEmail(),token)==ErrorsCodeDefine.SUSSESS){
+            log.info("update success");
+            return "redirect:/";
+        }
+        else {
+            log.info("update success");
+            return "redirect:/";
+        }
+    }
+
+    @GetMapping("/test")
+    public String Test() {
+
+        return "test";
     }
 }

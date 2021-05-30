@@ -37,6 +37,8 @@ public class UserServiceimpl implements UserService , UserDetailsService {
     public int create(UserEntity user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setAuthority("ROLE_USER");
+        user.setActivate(false);
+        user.generateToken();
         userDataRepo.save(user);
         return ErrorsCodeDefine.SUSSESS;
     }
@@ -77,8 +79,20 @@ public class UserServiceimpl implements UserService , UserDetailsService {
             System.out.println("password :: " + value);
             findUser.setPassword(passwordEncoder.encode(value));
             userDataRepo.save(findUser);
+            return ErrorsCodeDefine.SUSSESS;
         }
-        return 0;
+        return ErrorsCodeDefine.NOT_FOUND;
+    }
+
+    @Override
+    @Transactional
+    public int userActivated(String email, String token) {
+        UserEntity users = userDataRepo.findByEmail(email);
+        if (users != null && token.equals(users.getToken())) {
+            users.setActivate(true);
+            return ErrorsCodeDefine.SUSSESS;
+        }
+        return ErrorsCodeDefine.NOT_FOUND;
     }
 
 

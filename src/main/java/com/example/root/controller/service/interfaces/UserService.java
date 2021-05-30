@@ -10,6 +10,7 @@ public interface UserService {
     public int update(UserEntity user);
     public int delete(UserEntity user);
     public int passwordInitialization(String email);
+    public int userActivated(String email, String token);
 
 //    public int login(UserEntity user);
 }
