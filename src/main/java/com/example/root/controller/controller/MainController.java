@@ -22,10 +22,4 @@ public class MainController {
         }
         return "index";
     }
-
-//    @GetMapping("/")
-//    public String Main(){
-//        return "index";
-//    }
-
 }
