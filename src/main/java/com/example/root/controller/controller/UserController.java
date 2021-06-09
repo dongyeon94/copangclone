@@ -99,9 +99,9 @@ public class UserController {
         return "redirect:/user/login";
     }
 
-    @GetMapping("/eamilverified/{token}")
-    public String emailVerified(@PathVariable("token") String token, @AuthenticationPrincipal CustomUser userEntity){
-        if (userServiceimpl.userActivated(userEntity.getEmail(),token)==ErrorsCodeDefine.SUSSESS){
+    @GetMapping("/eamilverified/{email}/{token}")
+    public String emailVerified(@PathVariable("token") String token, @PathVariable("email") String email){
+        if (userServiceimpl.userActivated(email,token)==ErrorsCodeDefine.SUSSESS){
             log.info("update success");
             return "redirect:/";
         }

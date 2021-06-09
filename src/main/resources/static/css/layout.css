@@ -36,6 +36,7 @@ a:hover {
 .category-button {
     width:100px;
     height:100px;
+    background-image: url(/image/layout/category.PNG);
 }
 
 

@@ -27,29 +27,18 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
                 .mvcMatchers("/", "/login", "/signup", "/user/login", "/user/signup"
-                            ,"/user/findPassword").permitAll()
+                            ,"/user/findPassword","**/search/**","/user/eamilverified/**").permitAll()
                 .mvcMatchers(HttpMethod.GET,"/profile/*").permitAll()
                 .anyRequest().authenticated()
-
             .and()
-
-//        http.formLogin().loginPage("/user/login").
-//                usernameParameter("email").
-//                passwordParameter("password").permitAll();
-
                 .formLogin().loginPage("/user/login")
                             .usernameParameter("email")
                             .passwordParameter("password").permitAll()
-
             .and()
                 .logout().logoutSuccessUrl("/")
-
             .and()
                 .rememberMe().userDetailsService(userDetailsService).tokenRepository(tokenRepository());
-
     }
-
-
 
     @Bean
     public PersistentTokenRepository tokenRepository() throws Exception {
